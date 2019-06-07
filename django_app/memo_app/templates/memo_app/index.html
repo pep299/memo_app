@@ -1,0 +1,10 @@
+<html>
+    <head>
+    </head>
+    <body>
+        {% for memo in memos %}
+        <p>{{memo.content}}</p>
+        <p>{{memo.update_datetime|date:"Y/m/d H:i:s" }}</p>
+        {% endfor %}
+    </body>
+<html>

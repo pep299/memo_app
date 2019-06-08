@@ -1,0 +1,21 @@
+*{margin:0; padding:0; box-sizing:border-box}
+
+.all-box{width:100%; height:800px;}
+.left-box{width:49%;height:750px;float:left;border: solid #000000;margin:25px 0px 25px 10px;overflow:auto;}
+.right-box{width:49%;height:750px;float:left;border: solid #000000;margin:25px 0px 25px 0px;}
+
+.gauge1{width:75px;height:25px;border:solid #000000;float:right;margin-top:5px;margin-right:5px;}
+.grasp1{width:25px;height:25px;border:solid #000000;float:right;margin-top:5px;}
+.gauge2{width:75px;height:25px;border:solid #000000;float:right;margin-top:5px;margin-right:5px;}
+.grasp2{width:25px;height:25px;border:solid #000000;float:right;margin-top:5px;}
+
+.all-log{height:500px;width:500px;float:right;border:solid #000000;margin-top:50px;margin-right:150px;}
+.log-1{height:100px; width:500px;border-bottom:solid black;}
+.log-2{height:100px; width:500px;border-bottom:solid black;}
+.log-3{height:100px; width:500px;border-bottom:solid black;}
+.log-4{height:100px; width:500px;border-bottom:solid black;}
+.log-5{height:100px; width:500px;}
+
+.text-memo{margin:0 auto;margin-top:50px;text-align: center;}
+textarea{resize: vertical;overflow: auto;height:200px;width:70%;}
+.post_form{height:100px;width:300px;margin:0 auto;margin-top:100px;text-align: center;}

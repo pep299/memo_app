@@ -1,10 +1,30 @@
-<html>
+{% load static %}
+<!doctype html>
+<html lang="ja">
     <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'memo_app/style.css' %}">
+        <title>memo_app</title>
     </head>
     <body>
-        {% for memo in memos %}
-        <p>{{memo.content}}</p>
-        <p>{{memo.update_datetime|date:"Y/m/d H:i:s" }}</p>
-        {% endfor %}
+        <div class="all-box">
+            <div class="left-box">
+                {% for memo in memos %}
+                <p>{{memo.content}}</p>
+                <p>{{memo.update_datetime|date:"Y/m/d H:i:s" }}</p>
+                {% endfor %}
+            </div>
+            <div class="right-box">
+                <form action="{% url 'post' %}" method="post">
+                    {% csrf_token %}
+                    <div class="text-memo">
+                        {{form.content}}
+                    </div>
+                    <div class="post_form">
+                        <input type="submit" value="登録"
+                    </div>
+                </form>
+            </div>
+        </div>
     </body>
 <html>

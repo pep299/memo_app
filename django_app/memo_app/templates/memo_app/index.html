@@ -8,40 +8,49 @@
     </head>
     <body>
         <div class="all-box">
+
             <div class="left-box">
+                <div class="option">
+                    <form action="{% url 'set_record_number' %}" method="post">
+                        {% csrf_token %}
+                        {{ record_number_form.record_number }}
+                    </form>
+                </div>
                 {% for memo in page %}
                     <div class="memo-area">
-                        <p>{{memo.content}}</p>
-                        <p>{{memo.update_datetime|date:"Y/m/d H:i:s" }}</p>
+                        <p>{{ memo.content }}</p>
+                        <p>{{ memo.update_datetime|date:"Y/m/d H:i:s" }}</p>
                     </div>
                 {% endfor %}
                 <div class="pagination">
                     {% if page.has_previous %}
-                        <a href="{% url 'index' %}{{page.previous_page_number}}">前へ</a>
+                        <a href="{% url 'index' %}{{ page.previous_page_number }}">前へ</a>
                     {% endif %}
                     {% for num in page.paginator.page_range %}
                         {% if page.number == num %}
-                            <span class="current">{{page.number}}</span>
+                            <span class="current">{{ page.number }}</span>
                         {% else %}
-                            <a href="{% url 'index' %}{{num}}">{{num}}</a>
+                            <a href="{% url 'index' %}{{ num }}">{{ num }}</a>
                         {% endif %}
                     {% endfor %}
                     {% if page.has_next %}
-                        <a href="{% url 'index' %}{{page.next_page_number}}">次へ</a>
+                        <a href="{% url 'index' %}{{ page.next_page_number }}">次へ</a>
                     {% endif %}
                 </div>
             </div>
+
             <div class="right-box">
                 <form action="{% url 'post' %}" method="post">
                     {% csrf_token %}
                     <div class="text-memo">
-                        {{form.content}}
+                        {{ form.content }}
                     </div>
                     <div class="post-form">
                         <input type="submit" value="登録" class="post-botton">
                     </div>
                 </form>
             </div>
+
         </div>
     </body>
 <html>

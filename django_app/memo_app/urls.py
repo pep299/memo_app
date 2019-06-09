@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('<int:now_page>', views.index, name='index'),
     path('post', views.post, name='post'),
+    path('set_record_number', views.set_record_number, name='set_record_number'),
 ]

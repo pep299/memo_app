@@ -4,10 +4,12 @@
 .left-box{width:49%;height:750px;float:left;border: solid #000000;margin:25px 0px 25px 10px;overflow:auto;}
 .right-box{width:49%;height:750px;float:left;border: solid #000000;margin:25px 0px 25px 0px;overflow:auto;}
 
+.option{margin:5px 15px;text-align: right;}
+
 .memo-area{margin:5px 15px;border-bottom:solid gray;border-width:thin;}
 .pagination{padding:10px;text-align: center;}
 
 .text-memo{margin:0 auto;margin-top:50px;text-align: center;}
 textarea{resize: vertical;overflow: auto;height:200px;width:70%;}
 .post-form{height:100px;width:300px;margin:0 auto;margin-top:100px;text-align: center;}
-.post-botton{height:40px;width:100px;}
+.post-botton{padding: 20px 50px;}

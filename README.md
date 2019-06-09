@@ -11,4 +11,16 @@
 - Django 2.2.2
 - その他ライブラリは`requirements.txt`参照
 
+## 対象ブラウザ
+- firefox 66.0.5
+- Chrome 74.0.3729.131(一部レイアウト崩れあり)
 
+## 動作gif
+### メモ登録機能
+![メモ登録](https://github.com/pep299/memo_app/blob/images/%E7%99%BB%E9%8C%B2.gif)
+
+### ソート機能
+![ソート](https://github.com/pep299/memo_app/blob/images/%E3%82%BD%E3%83%BC%E3%83%88.gif)
+
+### 表示件数可変機能
+![表示変数可変](https://github.com/pep299/memo_app/blob/images/%E4%BB%B6%E6%95%B0.gif)

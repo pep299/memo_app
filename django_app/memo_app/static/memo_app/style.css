@@ -5,6 +5,9 @@
 .right-box{width:49%;height:750px;float:left;border: solid #000000;margin:25px 0px 25px 0px;overflow:auto;}
 
 .option{margin:5px 15px;text-align: right;}
+.option form{display: inline;}
+.order-option{margin-right:10px;}
+
 
 .memo-area{margin:5px 15px;border-bottom:solid gray;border-width:thin;}
 .pagination{padding:10px;text-align: center;}

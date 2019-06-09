@@ -11,6 +11,10 @@
 
             <div class="left-box">
                 <div class="option">
+                    <form action="{% url 'set_order_option' %}" method="post" class="order-option">
+                        {% csrf_token %}
+                        {{ order_option_form.order_option }}
+                    </form>
                     <form action="{% url 'set_record_number' %}" method="post">
                         {% csrf_token %}
                         {{ record_number_form.record_number }}

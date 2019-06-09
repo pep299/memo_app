@@ -5,4 +5,4 @@ class Memo(models.Model):
     update_datetime = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return 'id=' + str(self.id) + ', update_date=' + str(self.update_date)
+        return 'id=' + str(self.id) + ', update_datetime=' + str(self.update_datetime)

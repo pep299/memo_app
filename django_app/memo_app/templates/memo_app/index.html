@@ -9,10 +9,27 @@
     <body>
         <div class="all-box">
             <div class="left-box">
-                {% for memo in memos %}
-                <p>{{memo.content}}</p>
-                <p>{{memo.update_datetime|date:"Y/m/d H:i:s" }}</p>
+                {% for memo in page %}
+                    <div class="memo-area">
+                        <p>{{memo.content}}</p>
+                        <p>{{memo.update_datetime|date:"Y/m/d H:i:s" }}</p>
+                    </div>
                 {% endfor %}
+                <div class="pagination">
+                    {% if page.has_previous %}
+                        <a href="{% url 'index' %}{{page.previous_page_number}}">前へ</a>
+                    {% endif %}
+                    {% for num in page.paginator.page_range %}
+                        {% if page.number == num %}
+                            <span class="current">{{page.number}}</span>
+                        {% else %}
+                            <a href="{% url 'index' %}{{num}}">{{num}}</a>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page.has_next %}
+                        <a href="{% url 'index' %}{{page.next_page_number}}">次へ</a>
+                    {% endif %}
+                </div>
             </div>
             <div class="right-box">
                 <form action="{% url 'post' %}" method="post">
@@ -20,8 +37,8 @@
                     <div class="text-memo">
                         {{form.content}}
                     </div>
-                    <div class="post_form">
-                        <input type="submit" value="登録"
+                    <div class="post-form">
+                        <input type="submit" value="登録" class="post-botton">
                     </div>
                 </form>
             </div>

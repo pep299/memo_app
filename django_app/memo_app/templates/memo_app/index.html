@@ -3,29 +3,47 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'memo_app/reset.css' %}">
         <link rel="stylesheet" href="{% static 'memo_app/style.css' %}">
         <title>memo_app</title>
     </head>
     <body>
-        <div class="all-box">
+        <div id="memo">
+            <h2>メモ帳アプリ</h2>
+            <div class="memo-form">
+                <h3>メモ内容</h3>
+                <form action="{% url 'post' %}" method="post">
+                    {% csrf_token %}
+                    {{ form.content }}<br>
+                    <input type="submit" value="登録">
+                </form>
 
-            <div class="left-box">
-                <div class="option">
-                    <form action="{% url 'set_order_option' %}" method="post" class="order-option">
-                        {% csrf_token %}
+                <form action="{% url 'set_order_option' %}" method="post">
+                    {% csrf_token %}
+                    <div class="slct01">
                         {{ order_option_form.order_option }}
-                    </form>
-                    <form action="{% url 'set_record_number' %}" method="post">
-                        {% csrf_token %}
-                        {{ record_number_form.record_number }}
-                    </form>
-                </div>
-                {% for memo in page %}
-                    <div class="memo-area">
-                        <p>{{ memo.content }}</p>
-                        <p>{{ memo.update_datetime|date:"Y/m/d H:i:s" }}</p>
                     </div>
-                {% endfor %}
+                </form>
+
+                <form action="{% url 'set_record_number' %}" method="post">
+                    {% csrf_token %}
+                    <div class="slct02">
+                        {{ record_number_form.record_number }}
+                    </div>
+                </form>
+
+                <div class="memo-area">
+                    <h3>メモ内容一覧</h3>
+                    <ul>
+                        {% for memo in page %}
+                            <li>
+                                <span>{{ memo.update_datetime|date:"Y/m/d H:i:s" }}</span><br>
+                                {{ memo.content }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
                 <div class="pagination">
                     {% if page.has_previous %}
                         <a href="{% url 'index' %}{{ page.previous_page_number }}">前へ</a>
@@ -41,18 +59,6 @@
                         <a href="{% url 'index' %}{{ page.next_page_number }}">次へ</a>
                     {% endif %}
                 </div>
-            </div>
-
-            <div class="right-box">
-                <form action="{% url 'post' %}" method="post">
-                    {% csrf_token %}
-                    <div class="text-memo">
-                        {{ form.content }}
-                    </div>
-                    <div class="post-form">
-                        <input type="submit" value="登録" class="post-botton">
-                    </div>
-                </form>
             </div>
 
         </div>

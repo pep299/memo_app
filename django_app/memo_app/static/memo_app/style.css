@@ -97,7 +97,9 @@ h3,form{
 	font-weight: bold;
 	line-height: 2em;
 }
-
+.link, .message{
+	text-align: center;
+}
 
 /* 擬似要素css */
 

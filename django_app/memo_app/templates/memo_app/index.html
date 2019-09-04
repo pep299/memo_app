@@ -10,6 +10,18 @@
     <body>
         <div id="memo">
             <h2>メモ帳アプリ</h2>
+            {% if messages %}
+                <div class="message">
+                <ul>
+                    {% for message in messages %}
+                    <li>{{message}}</li>
+                    {% endfor %}
+                </ul>
+                </div>
+            {% endif %}
+            <div class="link">
+                <a href={% url 'account_logout' %}>ログアウト</a>
+            </div>
             <div class="memo-form">
                 <h3>メモ内容</h3>
                 <form action="{% url 'post' %}" method="post">
@@ -38,7 +50,7 @@
                         {% for memo in page %}
                             <li>
                                 <span>{{ memo.update_datetime|date:"Y/m/d H:i:s" }}</span><br>
-                                {{ memo.content }}
+                                {{ memo.content | linebreaksbr }}
                             </li>
                         {% endfor %}
                     </ul>

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
+from django.contrib.auth import get_user_model
 from .models import Memo
 from .forms import PostForm, RecordNumberForm, OrderOptionForm
 
@@ -27,9 +28,9 @@ def index(request, now_page=1):
 
     # メモ一覧取得
     memos = \
-            Memo.objects.all().order_by('update_datetime').reverse() \
+            Memo.objects.filter(user=request.user).order_by('update_datetime').reverse() \
             if 'desc' == order_option else \
-            Memo.objects.all().order_by('update_datetime')
+            Memo.objects.filter(user=request.user).order_by('update_datetime')
     page = Paginator(memos, record_number)
 
     params = {
@@ -49,5 +50,12 @@ def set_order_option(request):
     return redirect(to='/')
 
 def post(request):
-    PostForm(request.POST, instance = Memo()).save()
+    form = PostForm(request.POST, instance=Memo())
+    if form.is_valid():
+        user = get_user_model().objects.get(id=request.user.id)
+        memo = Memo(content=request.POST.get('content'), user=user)
+        memo.save()
+    else:
+        print(form.errors)
+
     return redirect(to='/')
